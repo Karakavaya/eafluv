@@ -1,69 +1,63 @@
-/* ELEMENT */
-
 const intro =
 document.getElementById("intro");
 
-const mainPage =
-document.getElementById("mainPage");
+const main =
+document.getElementById("main");
 
-const galleryPage =
-document.getElementById("galleryPage");
+const gallery =
+document.getElementById("gallery");
 
-const endingPage =
-document.getElementById("endingPage");
-
-const galleryImage =
-document.getElementById("galleryImage");
-
-const progressBar =
-document.getElementById("progressBar");
+const ending =
+document.getElementById("ending");
 
 const music =
-document.getElementById("bgMusic");
+document.getElementById("music");
 
 const typing =
 document.getElementById("typing");
 
-/* TEXT */
+const slide =
+document.getElementById("slide");
 
-const text =
-"Hai Sayang 🤍";
+const bar =
+document.getElementById("bar");
 
-let typingIndex = 0;
+/* OPEN */
 
-/* OPEN LETTER */
-
-function openLetterPage(){
+function openPage(){
 
   music.play();
 
   intro.classList.add("hidden");
 
-  mainPage.classList.remove("hidden");
+  main.classList.remove("hidden");
 
-  startTyping();
+  typeText();
 
 }
 
 /* TYPING */
 
-function startTyping(){
+const text =
+"Hai Sayang 🤍";
 
-  typing.innerHTML = "";
+let i = 0;
 
-  typingIndex = 0;
+function typeText(){
 
-  const interval =
+  const typingInterval =
   setInterval(()=>{
 
     typing.innerHTML +=
-    text.charAt(typingIndex);
+    text.charAt(i);
 
-    typingIndex++;
+    i++;
 
-    if(typingIndex >= text.length){
+    if(i >= text.length){
 
-      clearInterval(interval);
+      clearInterval(
+      typingInterval
+      );
 
     }
 
@@ -71,7 +65,7 @@ function startTyping(){
 
 }
 
-/* IMAGES */
+/* GALLERY */
 
 const images = [
 
@@ -86,70 +80,62 @@ const images = [
 
 let current = 0;
 
-/* SHOW GALLERY */
+function startGallery(){
 
-function showGallery(){
+  main.classList.add("hidden");
 
-  mainPage.classList.add("hidden");
+  gallery.classList.remove("hidden");
 
-  galleryPage.classList.remove("hidden");
-
-  startSlideshow();
+  startSlide();
 
 }
 
-/* SLIDESHOW */
+function startSlide(){
 
-function startSlideshow(){
+  updateBar();
 
-  updateProgress();
-
-  const slideInterval =
+  const interval =
   setInterval(()=>{
 
     current++;
 
-    /* END */
-
     if(current >= images.length){
 
-      clearInterval(slideInterval);
+      clearInterval(interval);
 
-      galleryPage.classList.add("hidden");
+      gallery.classList.add("hidden");
 
-      endingPage.classList.remove("hidden");
+      ending.classList.remove("hidden");
 
       return;
     }
 
-    /* TRANSITION */
-
-    galleryImage.style.opacity = 0;
+    slide.style.opacity = 0;
 
     setTimeout(()=>{
 
-      galleryImage.src =
+      slide.src =
       images[current];
 
-      galleryImage.style.opacity = 1;
+      slide.style.opacity = 1;
 
-      updateProgress();
+      updateBar();
 
     },500);
 
-  },4000);
+  },3500);
 
 }
 
-/* PROGRESS */
+/* BAR */
 
-function updateProgress(){
+function updateBar(){
 
   const percent =
   ((current + 1)
   / images.length) * 100;
 
-  progressBar.style.width =
+  bar.style.width =
   percent + "%";
 
 }

@@ -2,21 +2,29 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial,sans-serif;
 }
 
 body{
+
+  font-family:Arial,sans-serif;
+
   background:black;
+
   color:white;
+
   overflow:hidden;
 }
 
-/* PAGE */
+/* SCREEN */
 
-.page{
+.screen{
+
   width:100%;
+
   height:100vh;
+
   position:relative;
+
   overflow:hidden;
 }
 
@@ -24,145 +32,130 @@ body{
   display:none;
 }
 
-/* =========================
-   INTRO PAGE
-========================= */
-
-.intro{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  background:url("https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1600");
-
-  background-size:cover;
-  background-position:center;
-}
-
-/* OVERLAY FIX */
-
-.bg-dark{
-  position:absolute;
-  inset:0;
-
-  background:rgba(0,0,0,.55);
-
-  /* INI YANG MEMPERBAIKI */
-  pointer-events:none;
-}
-
-/* LETTER WRAPPER */
-
-.letter-wrapper{
-  position:relative;
-  z-index:10;
-}
-
-/* CLICKABLE AREA */
-
-.envelope-area{
-
-  position:relative;
-  z-index:9999;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-
-  cursor:pointer;
-
-  user-select:none;
-
-  -webkit-tap-highlight-color:transparent;
-}
-
-/* ENVELOPE */
-
-.envelope{
-
-  width:220px;
-  height:150px;
-
-  background:white;
-
-  border-radius:12px;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  box-shadow:
-  0 20px 50px rgba(0,0,0,.4);
-
-  animation:
-  floating 4s ease-in-out infinite,
-  pulse 2s infinite;
-}
-
-/* HEART */
-
-.heart{
-  font-size:3rem;
-  color:black;
-}
-
-/* TEXT */
-
-.envelope-area p{
-
-  margin-top:20px;
-
-  font-size:1.2rem;
-
-  color:white;
-
-  letter-spacing:1px;
-}
-
-/* =========================
-   HERO PAGE
-========================= */
-
-.hero{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* BACKGROUND */
+/* OVERLAY */
 
 .overlay{
+
   position:absolute;
+
   inset:0;
 
   background:
-  linear-gradient(
-  rgba(0,0,0,.55),
-  rgba(0,0,0,.75)),
-  url("https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1600");
-
-  background-size:cover;
-  background-position:center;
-
-  filter:blur(2px);
-
-  animation:
-  zoomBg 20s infinite alternate;
+  rgba(0,0,0,.45);
 }
 
-/* CONTENT */
+/* INTRO */
 
-.hero-content{
+.intro{
+
+  background:
+  url("Image2.jpg");
+
+  background-size:cover;
+
+  background-position:center;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+}
+
+.intro-content{
+
   position:relative;
-  z-index:5;
 
-  width:90%;
-  max-width:700px;
+  z-index:2;
 
   text-align:center;
 }
 
-/* PROFILE */
+.heart{
+
+  width:130px;
+  height:130px;
+
+  border-radius:50%;
+
+  background:white;
+
+  color:black;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  font-size:4rem;
+
+  margin:auto;
+
+  cursor:pointer;
+
+  animation:
+  pulse 2s infinite,
+  floating 4s ease-in-out infinite;
+
+  box-shadow:
+  0 20px 40px rgba(0,0,0,.4);
+}
+
+.intro h1{
+
+  margin-top:25px;
+
+  font-size:1.4rem;
+}
+
+/* MAIN */
+
+.bg{
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+  linear-gradient(
+  rgba(0,0,0,.5),
+  rgba(0,0,0,.7)),
+  url("Image3.jpg");
+
+  background-size:cover;
+
+  background-position:center;
+
+  filter:blur(3px);
+
+  scale:1.1;
+}
+
+.content{
+
+  position:relative;
+
+  z-index:2;
+
+  width:90%;
+
+  max-width:700px;
+
+  height:100%;
+
+  margin:auto;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+  align-items:center;
+
+  text-align:center;
+}
 
 .profile{
 
@@ -181,31 +174,29 @@ body{
   floating 5s ease-in-out infinite;
 }
 
-/* TITLE */
-
 #typing{
+
   font-size:3rem;
+
   margin-bottom:20px;
 }
 
-/* MESSAGE */
+.content p{
 
-.message{
   line-height:2;
-  font-size:1.1rem;
+
+  font-size:1.05rem;
 }
 
-/* BUTTON */
-
-.main-btn{
+button{
 
   margin-top:30px;
 
-  padding:15px 40px;
+  padding:15px 35px;
 
   border:none;
 
-  border-radius:50px;
+  border-radius:40px;
 
   background:white;
 
@@ -214,32 +205,22 @@ body{
   font-size:1rem;
 
   cursor:pointer;
-
-  transition:.3s;
 }
 
-.main-btn:hover{
-  transform:scale(1.05);
-}
+/* GALLERY */
 
-/* =========================
-   GALLERY PAGE
-========================= */
-
-.gallery-page{
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
+#gallery{
 
   background:black;
 
-  overflow:hidden;
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
 }
 
-/* STORY BAR */
-
-.story-progress{
+.progress{
 
   position:absolute;
 
@@ -247,61 +228,38 @@ body{
   left:0;
 
   width:100%;
+
   height:5px;
 
-  background:rgba(255,255,255,.15);
+  background:
+  rgba(255,255,255,.15);
 
-  z-index:20;
+  z-index:10;
 }
 
-.progress-bar{
+.bar{
 
   width:0%;
+
   height:100%;
 
   background:white;
 
-  transition:width .5s linear;
+  transition:.5s;
 }
 
-/* TITLE */
+#slide{
 
-.gallery-title{
+  width:82vw;
 
-  position:absolute;
-
-  top:30px;
-
-  width:100%;
-
-  text-align:center;
-
-  z-index:10;
-
-  font-size:2rem;
-}
-
-/* PHOTO */
-
-.photo-container{
-
-  width:100%;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-#galleryImage{
-
-  width:80vw;
-  max-width:320px;
+  max-width:330px;
 
   aspect-ratio:3/4;
 
   object-fit:cover;
 
   border:12px solid white;
+
   border-bottom:55px solid white;
 
   box-shadow:
@@ -309,34 +267,39 @@ body{
 
   animation:
   floating 5s ease-in-out infinite,
-  zoomPhoto 10s infinite alternate;
+  zoom 8s infinite alternate;
 
   transition:
-  opacity 1s ease,
-  filter 1s ease;
+  opacity 1s ease;
 }
 
-/* =========================
-   ENDING PAGE
-========================= */
+/* ENDING */
 
-.ending{
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
+#ending{
 
   background:
   linear-gradient(
-  rgba(0,0,0,.55),
-  rgba(0,0,0,.75)),
-  url("https://images.unsplash.com/photo-1511988617509-a57c8a288659?q=80&w=1600");
+  rgba(0,0,0,.5),
+  rgba(0,0,0,.7)),
+  url("Image6.jpg");
 
   background-size:cover;
+
   background-position:center;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
 }
 
 .ending-content{
+
+  position:relative;
+
+  z-index:2;
+
   text-align:center;
 }
 
@@ -347,16 +310,23 @@ body{
   margin-bottom:20px;
 }
 
-.ending-content p{
+/* ANIMATION */
 
-  font-size:1.2rem;
+@keyframes pulse{
 
-  line-height:1.8;
+  0%{
+    scale:1;
+  }
+
+  50%{
+    scale:1.05;
+  }
+
+  100%{
+    scale:1;
+  }
+
 }
-
-/* =========================
-   ANIMATION
-========================= */
 
 @keyframes floating{
 
@@ -374,23 +344,7 @@ body{
 
 }
 
-@keyframes pulse{
-
-  0%{
-    scale:1;
-  }
-
-  50%{
-    scale:1.03;
-  }
-
-  100%{
-    scale:1;
-  }
-
-}
-
-@keyframes zoomPhoto{
+@keyframes zoom{
 
   from{
     scale:1;
@@ -402,21 +356,7 @@ body{
 
 }
 
-@keyframes zoomBg{
-
-  from{
-    transform:scale(1);
-  }
-
-  to{
-    transform:scale(1.2);
-  }
-
-}
-
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:768px){
 
@@ -424,23 +364,11 @@ body{
     font-size:2rem;
   }
 
-  .gallery-title{
-
-    font-size:1.5rem;
-
-    padding:0 20px;
-  }
-
-  #galleryImage{
-
-    width:82vw;
-  }
-
-  .message{
+  .content p{
 
     font-size:1rem;
 
-    line-height:1.9;
+    line-height:1.8;
   }
 
 }
