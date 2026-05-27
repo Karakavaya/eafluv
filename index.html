@@ -2,40 +2,39 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0">
 
-  <title>Buat Sayangkuuu 🤍</title>
+  <title>Buat Sayang 🤍</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- MUSIC -->
-<audio loop id="bgMusic">
+<audio id="bgMusic" loop>
   <source src="svg.mp3" type="audio/mpeg">
 </audio>
 
 <!-- INTRO -->
 <section class="page intro" id="intro">
 
-  <div class="intro-overlay"></div>
+  <div class="bg-dark"></div>
 
   <div class="letter-wrapper">
 
-    <div class="envelope-btn"
-    id="openBtn">
+    <div class="envelope-area"
+    id="openLetter">
 
       <div class="envelope">
 
-        <div class="letter-front">
+        <div class="heart">
           🤍
         </div>
 
       </div>
 
-      <p class="letter-text">
-        Buka Surat
-      </p>
+      <p>Buka ya Sayang</p>
 
     </div>
 
@@ -43,28 +42,35 @@
 
 </section>
 
-<!-- MAIN -->
-<section class="page hidden hero" id="mainPage">
+<!-- HERO -->
+<section class="page hero hidden"
+id="mainPage">
 
   <div class="overlay"></div>
 
   <div class="hero-content">
 
-    <img src="Image2.jpg" class="profile">
+    <img src="Image2.jpg"
+    class="profile">
 
     <h1 id="typing"></h1>
 
-    <p class="fade-text">
+    <p class="message">
+
       Maaf ya sayang...
       Aku sadar aku terlalu tantrum hari ini.
       Padahal kamu juga lagi capek.
-      Terima kasih karena baik dan sabar menghadapi aku.
+      Terima kasih karena sudah baik dan sabar.
       Aku belajar buat jadi lebih baik lagi.
       Aku sayang banget sama kamu 🤍
+
     </p>
 
-    <button onclick="showGallery()">
-      Cantikkuuuu 🤍
+    <button class="main-btn"
+    onclick="showGallery()">
+
+      Cintakuuuu 🤍
+
     </button>
 
   </div>
@@ -72,12 +78,13 @@
 </section>
 
 <!-- GALLERY -->
-<section class="page hidden gallery-page" id="galleryPage">
+<section class="page gallery-page hidden"
+id="galleryPage">
 
-  <!-- STORY PROGRESS -->
   <div class="story-progress">
 
-    <div class="progress-bar" id="progressBar"></div>
+    <div class="progress-bar"
+    id="progressBar"></div>
 
   </div>
 
@@ -85,27 +92,26 @@
     Kesayangan Akuuuu 🤍
   </h2>
 
-  <div class="single-photo-container">
+  <div class="photo-container">
 
-    <img id="galleryImage" src="Image1.jpg">
+    <img id="galleryImage"
+    src="Image1.jpg">
 
   </div>
-
-  <p class="tap-text">
-    Sayang Bangeett 🤍
-  </p>
 
 </section>
 
 <!-- ENDING -->
-<section class="page hidden ending" id="endingPage">
+<section class="page ending hidden"
+id="endingPage">
 
   <div class="ending-content">
 
     <h1>I Love You 🤍</h1>
 
     <p>
-      Terima kasih sudah bertahan sejauh ini 🤍
+      Terima kasih sudah bertahan
+      sejauh ini 🤍
     </p>
 
   </div>

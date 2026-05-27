@@ -1,10 +1,4 @@
-window.onload = function(){
-
-  const text = "Hai Sayang 🤍";
-
-  let i = 0;
-
-  /* ELEMENT */
+window.onload = () => {
 
   const intro =
   document.getElementById("intro");
@@ -18,8 +12,8 @@ window.onload = function(){
   const endingPage =
   document.getElementById("endingPage");
 
-  const openBtn =
-  document.getElementById("openBtn");
+  const openLetter =
+  document.getElementById("openLetter");
 
   const galleryImage =
   document.getElementById("galleryImage");
@@ -30,25 +24,25 @@ window.onload = function(){
   const music =
   document.getElementById("bgMusic");
 
-  /* TYPING */
+  const typing =
+  document.getElementById("typing");
 
-  function typingEffect(){
+  const images = [
 
-    if(i < text.length){
+    "Image1.jpg",
+    "Image2.jpg",
+    "Image3.jpg",
+    "Image4.jpg",
+    "Image5.jpg",
+    "Image6.jpg"
 
-      document.getElementById("typing")
-      .innerHTML += text.charAt(i);
+  ];
 
-      i++;
+  let current = 0;
 
-      setTimeout(typingEffect,100);
-    }
+  /* LETTER CLICK */
 
-  }
-
-  /* OPEN LETTER */
-
-  function openLetter(){
+  openLetter.onclick = () => {
 
     music.play();
 
@@ -56,25 +50,39 @@ window.onload = function(){
 
     mainPage.classList.remove("hidden");
 
-    typingEffect();
+    startTyping();
+
+  };
+
+  /* TYPING */
+
+  const text =
+  "Hai Sayang 🤍";
+
+  let i = 0;
+
+  function startTyping(){
+
+    const interval =
+    setInterval(()=>{
+
+      typing.innerHTML += text[i];
+
+      i++;
+
+      if(i >= text.length){
+
+        clearInterval(interval);
+
+      }
+
+    },100);
 
   }
 
-  /* BUTTON EVENT */
-
-  openBtn.addEventListener(
-    "click",
-    openLetter
-  );
-
-  openBtn.addEventListener(
-    "touchstart",
-    openLetter
-  );
-
   /* OPEN GALLERY */
 
-  window.showGallery = function(){
+  window.showGallery = () => {
 
     mainPage.classList.add("hidden");
 
@@ -82,82 +90,48 @@ window.onload = function(){
 
     startSlideshow();
 
-  }
+  };
 
-  /* ENDING */
-
-  function showEnding(){
-
-    galleryPage.classList.add("hidden");
-
-    endingPage.classList.remove("hidden");
-
-  }
-
-  /* IMAGES */
-
-  const images = [
-
-    "Image1.jpg",
-    "Image2.jpg",
-    "Image3.jpg",
-    "Image4.PNG",
-    "Image5.PNG",
-    "Image6.PNG"
-
-  ];
-
-  let currentImage = 0;
-
-  /* NEXT IMAGE */
-
-  function nextImage(){
-
-    currentImage++;
-
-    if(currentImage >= images.length){
-
-      showEnding();
-
-      return;
-    }
-
-    galleryImage.style.opacity = 0;
-
-    galleryImage.style.filter =
-    "blur(10px)";
-
-    galleryImage.style.transform =
-    "scale(.92)";
-
-    setTimeout(() => {
-
-      galleryImage.src =
-      images[currentImage];
-
-      galleryImage.style.opacity = 1;
-
-      galleryImage.style.filter =
-      "blur(0px)";
-
-      galleryImage.style.transform =
-      "scale(1)";
-
-      updateProgress();
-
-    },700);
-
-  }
-
-  /* AUTO STORY */
+  /* SLIDESHOW */
 
   function startSlideshow(){
 
     updateProgress();
 
-    setInterval(() => {
+    const slide =
+    setInterval(()=>{
 
-      nextImage();
+      current++;
+
+      if(current >= images.length){
+
+        clearInterval(slide);
+
+        galleryPage.classList.add("hidden");
+
+        endingPage.classList.remove("hidden");
+
+        return;
+      }
+
+      galleryImage.style.opacity = 0;
+
+      galleryImage.style.filter =
+      "blur(10px)";
+
+      setTimeout(()=>{
+
+        galleryImage.src =
+        images[current];
+
+        galleryImage.style.opacity = 1;
+
+        galleryImage.style.filter =
+        "blur(0px)";
+
+        updateProgress();
+
+      },600);
 
     },4000);
 
@@ -168,7 +142,7 @@ window.onload = function(){
   function updateProgress(){
 
     const percent =
-    ((currentImage + 1)
+    ((current + 1)
     / images.length) * 100;
 
     progressBar.style.width =
@@ -176,24 +150,4 @@ window.onload = function(){
 
   }
 
-  /* PARALLAX */
-
-  document.addEventListener(
-    "mousemove",
-    (e)=>{
-
-      const x =
-      (window.innerWidth / 2 - e.pageX)
-      / 40;
-
-      const y =
-      (window.innerHeight / 2 - e.pageY)
-      / 40;
-
-      galleryImage.style.transform =
-      `translate(${x}px, ${y}px)`;
-
-    }
-  );
-
-}
+};
