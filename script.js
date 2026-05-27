@@ -1,153 +1,158 @@
-window.onload = () => {
+/* ELEMENT */
 
-  const intro =
-  document.getElementById("intro");
+const intro =
+document.getElementById("intro");
 
-  const mainPage =
-  document.getElementById("mainPage");
+const mainPage =
+document.getElementById("mainPage");
 
-  const galleryPage =
-  document.getElementById("galleryPage");
+const galleryPage =
+document.getElementById("galleryPage");
 
-  const endingPage =
-  document.getElementById("endingPage");
+const endingPage =
+document.getElementById("endingPage");
 
-  const openLetter =
-  document.getElementById("openLetter");
+const galleryImage =
+document.getElementById("galleryImage");
 
-  const galleryImage =
-  document.getElementById("galleryImage");
+const progressBar =
+document.getElementById("progressBar");
 
-  const progressBar =
-  document.getElementById("progressBar");
+const music =
+document.getElementById("bgMusic");
 
-  const music =
-  document.getElementById("bgMusic");
+const typing =
+document.getElementById("typing");
 
-  const typing =
-  document.getElementById("typing");
+/* TEXT */
 
-  const images = [
+const text =
+"Hai Sayang 🤍";
 
-    "Image1.jpg",
-    "Image2.jpg",
-    "Image3.jpg",
-    "Image4.jpg",
-    "Image5.jpg",
-    "Image6.jpg"
+let i = 0;
 
-  ];
+/* OPEN LETTER */
 
-  let current = 0;
+function openLetterPage(){
 
-  /* LETTER CLICK */
+  music.play();
 
-  openLetter.onclick = () => {
+  intro.classList.add("hidden");
 
-    music.play();
+  mainPage.classList.remove("hidden");
 
-    intro.classList.add("hidden");
+  startTyping();
 
-    mainPage.classList.remove("hidden");
+}
 
-    startTyping();
+/* TYPING */
 
-  };
+function startTyping(){
 
-  /* TYPING */
+  typing.innerHTML = "";
 
-  const text =
-  "Hai Sayang 🤍";
+  const interval =
+  setInterval(()=>{
 
-  let i = 0;
+    typing.innerHTML += text[i];
 
-  function startTyping(){
+    i++;
 
-    const interval =
-    setInterval(()=>{
+    if(i >= text.length){
 
-      typing.innerHTML += text[i];
+      clearInterval(interval);
 
-      i++;
+    }
 
-      if(i >= text.length){
+  },100);
 
-        clearInterval(interval);
+}
 
-      }
+/* GALLERY */
 
-    },100);
+const images = [
 
-  }
+  "Image1.jpg",
+  "Image2.jpg",
+  "Image3.jpg",
+  "Image4.PNG",
+  "Image5.PNG",
+  "Image6.PNG"
 
-  /* OPEN GALLERY */
+];
 
-  window.showGallery = () => {
+let current = 0;
 
-    mainPage.classList.add("hidden");
+/* SHOW GALLERY */
 
-    galleryPage.classList.remove("hidden");
+function showGallery(){
 
-    startSlideshow();
+  mainPage.classList.add("hidden");
 
-  };
+  galleryPage.classList.remove("hidden");
 
-  /* SLIDESHOW */
+  startSlideshow();
 
-  function startSlideshow(){
+}
 
-    updateProgress();
+/* SLIDESHOW */
 
-    const slide =
-    setInterval(()=>{
+function startSlideshow(){
 
-      current++;
+  updateProgress();
 
-      if(current >= images.length){
+  const slide =
+  setInterval(()=>{
 
-        clearInterval(slide);
+    current++;
 
-        galleryPage.classList.add("hidden");
+    /* END */
 
-        endingPage.classList.remove("hidden");
+    if(current >= images.length){
 
-        return;
-      }
+      clearInterval(slide);
 
-      galleryImage.style.opacity = 0;
+      galleryPage.classList.add("hidden");
+
+      endingPage.classList.remove("hidden");
+
+      return;
+    }
+
+    /* TRANSITION */
+
+    galleryImage.style.opacity = 0;
+
+    galleryImage.style.filter =
+    "blur(10px)";
+
+    setTimeout(()=>{
+
+      galleryImage.src =
+      images[current];
+
+      galleryImage.style.opacity = 1;
 
       galleryImage.style.filter =
-      "blur(10px)";
+      "blur(0px)";
 
-      setTimeout(()=>{
+      updateProgress();
 
-        galleryImage.src =
-        images[current];
+    },600);
 
-        galleryImage.style.opacity = 1;
+  },4000);
 
-        galleryImage.style.filter =
-        "blur(0px)";
+}
 
-        updateProgress();
+/* PROGRESS */
 
-      },600);
+function updateProgress(){
 
-    },4000);
+  const percent =
+  ((current + 1)
+  / images.length) * 100;
 
-  }
+  progressBar.style.width =
+  percent + "%";
 
-  /* PROGRESS */
-
-  function updateProgress(){
-
-    const percent =
-    ((current + 1)
-    / images.length) * 100;
-
-    progressBar.style.width =
-    percent + "%";
-
-  }
-
-};
+}
