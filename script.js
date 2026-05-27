@@ -1,3 +1,5 @@
+/* ELEMENT */
+
 const intro =
 document.getElementById("intro");
 
@@ -10,54 +12,60 @@ document.getElementById("gallery");
 const ending =
 document.getElementById("ending");
 
+const openBtn =
+document.getElementById("openBtn");
+
+const galleryBtn =
+document.getElementById("galleryBtn");
+
 const music =
 document.getElementById("music");
 
 const typing =
 document.getElementById("typing");
 
-const slide =
-document.getElementById("slide");
+const galleryImage =
+document.getElementById("galleryImage");
 
-const bar =
-document.getElementById("bar");
+const progressBar =
+document.getElementById("progressBar");
 
-/* OPEN */
+/* OPEN PAGE */
 
-function openPage(){
+openBtn.addEventListener(
+"click",
+()=>{
 
   music.play();
 
-  intro.classList.add("hidden");
+  intro.classList.remove("active");
 
-  main.classList.remove("hidden");
+  main.classList.add("active");
 
-  typeText();
+  startTyping();
 
-}
+});
 
 /* TYPING */
 
 const text =
 "Hai Sayang 🤍";
 
-let i = 0;
+let index = 0;
 
-function typeText(){
+function startTyping(){
 
-  const typingInterval =
+  const interval =
   setInterval(()=>{
 
     typing.innerHTML +=
-    text.charAt(i);
+    text.charAt(index);
 
-    i++;
+    index++;
 
-    if(i >= text.length){
+    if(index >= text.length){
 
-      clearInterval(
-      typingInterval
-      );
+      clearInterval(interval);
 
     }
 
@@ -80,46 +88,48 @@ const images = [
 
 let current = 0;
 
+galleryBtn.addEventListener(
+"click",
+()=>{
+
+  main.classList.remove("active");
+
+  gallery.classList.add("active");
+
+  startGallery();
+
+});
+
 function startGallery(){
 
-  main.classList.add("hidden");
+  updateProgress();
 
-  gallery.classList.remove("hidden");
-
-  startSlide();
-
-}
-
-function startSlide(){
-
-  updateBar();
-
-  const interval =
+  const slide =
   setInterval(()=>{
 
     current++;
 
     if(current >= images.length){
 
-      clearInterval(interval);
+      clearInterval(slide);
 
-      gallery.classList.add("hidden");
+      gallery.classList.remove("active");
 
-      ending.classList.remove("hidden");
+      ending.classList.add("active");
 
       return;
     }
 
-    slide.style.opacity = 0;
+    galleryImage.style.opacity = 0;
 
     setTimeout(()=>{
 
-      slide.src =
+      galleryImage.src =
       images[current];
 
-      slide.style.opacity = 1;
+      galleryImage.style.opacity = 1;
 
-      updateBar();
+      updateProgress();
 
     },500);
 
@@ -127,15 +137,15 @@ function startSlide(){
 
 }
 
-/* BAR */
+/* PROGRESS */
 
-function updateBar(){
+function updateProgress(){
 
   const percent =
   ((current + 1)
   / images.length) * 100;
 
-  bar.style.width =
+  progressBar.style.width =
   percent + "%";
 
 }

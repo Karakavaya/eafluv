@@ -1,62 +1,64 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport"
   content="width=device-width, initial-scale=1.0">
 
-  <title>Buat Sayang 🤍</title>
+  <title>Untuk Kamu 🤍</title>
 
-  <link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet"
+  href="style.css">
 </head>
 <body>
 
-<!-- MUSIC -->
+<!-- AUDIO -->
 
 <audio id="music" loop>
-
   <source src="svg.mp3"
   type="audio/mpeg">
-
 </audio>
 
 <!-- INTRO -->
 
-<section class="screen intro"
-id="intro">
+<div id="intro"
+class="page active">
 
-  <div class="overlay"></div>
+  <img src="Image1.jpg"
+  class="bg-image">
 
-  <div class="intro-content">
+  <div class="dark"></div>
 
-    <div class="heart"
-    onclick="openPage()">
+  <div class="center">
+
+    <div id="openBtn"
+    class="love-btn">
 
       🤍
 
     </div>
 
     <h1>
-      Tap Disini
+      Tap Untuk Membuka
     </h1>
 
   </div>
 
-</section>
+</div>
 
 <!-- MAIN -->
 
-<section class="screen hidden"
-id="main">
+<div id="main"
+class="page">
 
-  <div class="bg"></div>
+  <img src="Image2.jpg"
+  class="bg-image">
 
-  <div class="content">
+  <div class="dark"></div>
 
-    <img src="Image1.jpg"
+  <div class="center content">
+
+    <img src="Image3.jpg"
     class="profile">
 
     <h1 id="typing"></h1>
@@ -64,48 +66,49 @@ id="main">
     <p>
 
       Maaf ya sayang...
-      Aku sadar hari ini aku terlalu tantrum.
-      Padahal kamu juga lagi capek.
-      Terima kasih karena baik dan sabar sama aku.
+      Aku sadar hari ini aku terlalu childish.
+      Terima kasih karena masih sabar sama aku.
       Aku sayang banget sama kamu 🤍
 
     </p>
 
-    <button onclick="startGallery()">
+    <button id="galleryBtn">
 
-      Cantikkuuu 🤍
+      Lihat Kenangan 🤍
 
     </button>
 
   </div>
 
-</section>
+</div>
 
 <!-- GALLERY -->
 
-<section class="screen hidden"
-id="gallery">
+<div id="gallery"
+class="page">
 
   <div class="progress">
 
-    <div class="bar"
-    id="bar"></div>
+    <div id="progressBar"></div>
 
   </div>
 
-  <img id="slide"
+  <img id="galleryImage"
   src="Image1.jpg">
 
-</section>
+</div>
 
-<!-- ENDING -->
+<!-- END -->
 
-<section class="screen hidden"
-id="ending">
+<div id="ending"
+class="page">
 
-  <div class="overlay"></div>
+  <img src="Image6.jpg"
+  class="bg-image">
 
-  <div class="ending-content">
+  <div class="dark"></div>
+
+  <div class="center">
 
     <h1>
       I Love You 🤍
@@ -118,7 +121,7 @@ id="ending">
 
   </div>
 
-</section>
+</div>
 
 <script src="script.js"></script>
 
