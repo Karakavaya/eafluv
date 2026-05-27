@@ -29,7 +29,7 @@ document.getElementById("typing");
 const text =
 "Hai Sayang 🤍";
 
-let i = 0;
+let typingIndex = 0;
 
 /* OPEN LETTER */
 
@@ -51,14 +51,17 @@ function startTyping(){
 
   typing.innerHTML = "";
 
+  typingIndex = 0;
+
   const interval =
   setInterval(()=>{
 
-    typing.innerHTML += text[i];
+    typing.innerHTML +=
+    text.charAt(typingIndex);
 
-    i++;
+    typingIndex++;
 
-    if(i >= text.length){
+    if(typingIndex >= text.length){
 
       clearInterval(interval);
 
@@ -68,16 +71,16 @@ function startTyping(){
 
 }
 
-/* GALLERY */
+/* IMAGES */
 
 const images = [
 
   "Image1.jpg",
   "Image2.jpg",
   "Image3.jpg",
-  "Image4.PNG",
-  "Image5.PNG",
-  "Image6.PNG"
+  "Image4.jpg",
+  "Image5.jpg",
+  "Image6.jpg"
 
 ];
 
@@ -101,7 +104,7 @@ function startSlideshow(){
 
   updateProgress();
 
-  const slide =
+  const slideInterval =
   setInterval(()=>{
 
     current++;
@@ -110,7 +113,7 @@ function startSlideshow(){
 
     if(current >= images.length){
 
-      clearInterval(slide);
+      clearInterval(slideInterval);
 
       galleryPage.classList.add("hidden");
 
@@ -123,9 +126,6 @@ function startSlideshow(){
 
     galleryImage.style.opacity = 0;
 
-    galleryImage.style.filter =
-    "blur(10px)";
-
     setTimeout(()=>{
 
       galleryImage.src =
@@ -133,12 +133,9 @@ function startSlideshow(){
 
       galleryImage.style.opacity = 1;
 
-      galleryImage.style.filter =
-      "blur(0px)";
-
       updateProgress();
 
-    },600);
+    },500);
 
   },4000);
 
